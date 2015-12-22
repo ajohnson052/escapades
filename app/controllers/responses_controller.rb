@@ -16,11 +16,13 @@ class ResponsesController < ApplicationController
   def edit
     @escapade = Escapade.find(params[:escapade_id])
     @response = Response.find(params[:id])
+    authorize! :edit, @response
   end
 
   def update
     @escapade = Escapade.find(params[:escapade_id])
     @response = Response.find(params[:id])
+    authorize! :update, @response
     if @response.update(response_params)
       flash[:notice] = "You have successfully updated your response"
       redirect_to escapade_response_path(@escapade, @response)
@@ -32,6 +34,7 @@ class ResponsesController < ApplicationController
   def destroy
     @escapade = Escapade.find(params[:escapade_id])
     @response = Response.find(params[:id])
+    authorize! :destroy, @response
     @response.destroy
     flash[:notice] = "You have removed your availability for this idea"
     redirect_to escapade_path(@escapade)

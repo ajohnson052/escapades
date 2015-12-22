@@ -34,10 +34,12 @@ class EscapadesController < ApplicationController
 
   def edit
     @escapade = Escapade.find(params[:id])
+    authorize! :edit, @escapade
   end
 
   def update
     @escapade = Escapade.find(params[:id])
+    authorize! :update, @escapade
     if @escapade.update(escapade_params)
       flash[:notice] = "You have successfully updated your idea!"
       redirect_to escapade_path(@escapade)
@@ -47,7 +49,9 @@ class EscapadesController < ApplicationController
   end
 
   def destroy
-    Escapade.find(params[:id]).destroy
+    @escapade = Escapade.find(params[:id])
+    authorize! :destroy, @escapade
+    @escapade.destroy
     redirect_to escapades_path
   end
 

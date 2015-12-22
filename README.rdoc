@@ -10,6 +10,7 @@ Technologies Used:
 --used Rails (MVC web application framework)
 --used ActiveRecord (object relational mapping)
 --used Devise for user authentification
+--used CanCanCan for user authorization
 
 Problems Encountered:
 --I originally intended to have responses include start and end dates rather
@@ -18,7 +19,6 @@ express availability for multiple timeframes by entering multiple responses, but
 this was not very user friendly.
 
 Future Development:
---I would like to add permissions for updating/deleting via CanCanCan
 --I would like to restrict responses/commits to an escapade creator's friends
 --I would like to add details about a user's commits and responses to profiles
 --I would like to add an option to archive events
