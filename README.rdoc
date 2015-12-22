@@ -19,6 +19,7 @@ express availability for multiple timeframes by entering multiple responses, but
 this was not very user friendly.
 
 Future Development:
+--I would like to improve error handling (e.g. for paths that do not exist, for pages the user is not authorized to access)
 --I would like to restrict responses/commits to an escapade creator's friends
 --I would like to add details about a user's commits and responses to profiles
 --I would like to add an option to archive events
