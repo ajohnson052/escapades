@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :responses
   has_many :escapades
   has_many :commits
+  has_many :tempships
+  has_many :temps, through: :tempships
   has_many :friendships
   has_many :friends, through: :friendships
   has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
