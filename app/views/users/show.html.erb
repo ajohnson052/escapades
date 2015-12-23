@@ -43,11 +43,14 @@
     <% end %>
 </div>
 <div class = "user-friends">
-  <% if(!@user.temps.empty?) %>
+  <% if(!(@user.temps | @user.inverse_temps).empty?) %>
     <h2>Pending Friend Requests</h2>
     <ul>
+      <% @user.inverse_temps.each do |inverse_temp| %>
+        <li><%= inverse_temp.email %><%= link_to "Accept", friendships_path(friend_id: inverse_temp.id), method: :post %></li>
+      <% end %>
       <% @user.temps.each do |temp| %>
-        <li><%= temp.email %><%= link_to "Accept", friendships_path(friend_id: temp.id), method: :post %></li>
+        <li><%= temp.email %></li>
       <% end %>
     </ul>
   <% end %>
