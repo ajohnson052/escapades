@@ -9,7 +9,7 @@ class ResponsesController < ApplicationController
 
   def create
     @escapade = Escapade.find(params[:escapade_id])
-    authorize! :respond, @escapade.user
+    authorize! :respond, @escapade.user, message: "You are only able to respond to escapades if you are friends with the creator"
     @response = @escapade.responses.create(escapade_id: @escapade.id, user_id: current_user.id)
     redirect_to escapade_response_path(@escapade, @response)
   end

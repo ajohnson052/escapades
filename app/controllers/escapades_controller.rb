@@ -57,7 +57,7 @@ class EscapadesController < ApplicationController
 
   def add_commit
     @escapade = Escapade.find(params[:id])
-    authorize! :commit, @escapade.user
+    authorize! :commit, @escapade.user, message: "You are only able to commit to escapades if you are friends with the creator"
     @escapade.commits.create(user: current_user)
     flash[:notice] = "You have committed to this event"
     redirect_to escapade_path(@escapade)

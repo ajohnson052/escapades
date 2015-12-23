@@ -19,37 +19,9 @@ express availability for multiple timeframes by entering multiple responses, but
 this was not very user friendly.
 
 Future Development:
---I would like to improve error handling (e.g. for paths that do not exist, for pages the user is not authorized to access)
---I would like to restrict responses/commits to an escapade creator's friends
+--I would like to improve error handling. (e.g. for paths that do not exist)
+--I would like to require that friendships be confirmed before they are created
 --I would like to add details about a user's commits and responses to profiles
+--I would like for the footer to stick to the bottom of the page
 --I would like to add an option to archive events
 (see trello for more ideas)
-
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
