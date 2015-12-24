@@ -7,6 +7,9 @@ class Ability
     can [:commit, :respond], User, User do |creator|
       user.friends.include?(creator) || user.inverse_friends.include?(creator)
     end
+    can :create, Friendship, Friendship do |friendship|
+      Tempship.find_by(temp_id: user.id, user_id: friendship.friend_id)
+    end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

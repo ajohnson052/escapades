@@ -3,6 +3,7 @@ class FriendshipsController < ApplicationController
   def create
     @friend = User.find(params[:friend_id])
     @friendship = current_user.friendships.build(friend_id: params[:friend_id])
+    authorize! :create, @friendship
     if @friendship.save
       destroy_tempship
       flash[:notice] = "You have added #{@friend.email} as your friend!"

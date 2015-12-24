@@ -43,7 +43,7 @@
     <% end %>
 </div>
 <div class = "user-friends">
-  <% if(!(@user.temps | @user.inverse_temps).empty?) %>
+  <% if(!(@user.temps | @user.inverse_temps).empty? && @user==current_user) %>
     <h2>Pending Friend Requests</h2>
     <ul>
       <% @user.inverse_temps.each do |inverse_temp| %>
