@@ -4,6 +4,7 @@ class FriendshipsController < ApplicationController
     @friend = User.find(params[:friend_id])
     @friendship = current_user.friendships.build(friend_id: params[:friend_id])
     if @friendship.save
+      destroy_tempship
       flash[:notice] = "You have added #{@friend.email} as your friend!"
     end
     redirect_to user_path(@friend)
@@ -19,5 +20,11 @@ class FriendshipsController < ApplicationController
     @friendship.destroy
     flash[:notice] = "You have removed #{@friend.email} from your friends"
     redirect_to user_path(current_user)
+  end
+
+  private
+  def destroy_tempship
+    @tempship = current_user.inverse_tempships.find_by(user_id: params[:friend_id])
+    @tempship.destroy
   end
 end
