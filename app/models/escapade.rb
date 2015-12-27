@@ -5,5 +5,6 @@ class Escapade < ActiveRecord::Base
   validates :title, presence: true
   validates :start_date, :end_date, :status, presence: true
   validates :status, inclusion: ["idea", "event", "archive"]
+  mount_uploader :image, ImageUploader
 
 end

@@ -7,8 +7,8 @@
   <%= f.date_field :start_date %>
   <%= f.label :end_date %>
   <%= f.date_field :end_date %>
-  <%= f.label :image, "Image URL" %>
-  <%= f.text_field :image, placeholder: "Image URL" %>
+  <%= f.label :image, "Photo" %>
+  <%= f.file_field :image %>
   <%= f.label :description %>
   <%= f.text_area :description, class: "description" %>
   <%= f.submit %>
