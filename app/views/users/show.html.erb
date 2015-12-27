@@ -36,7 +36,7 @@
       <% end %>
     <% end %>
 </div>
-<div class = "user-friends">
+<div class = "user-social">
   <% if(!(@user.temps | @user.inverse_temps).empty? && @user==current_user) %>
     <h2>Pending Friend Requests</h2>
     <ul>
@@ -58,4 +58,11 @@
         <% end %>
       </ul>
     <% end %>
+  <h2>Commits</h2>
+    <% @user.commits.each do |commit| %>
+      <% escapade= @escapades.find(commit.escapade_id) %>
+      <%= escapade.title %>
+      <%= format_date(escapade.start_date) %> - <%= format_date(escapade.end_date) %>
+    <% end %>
+  <h2>Responses</h2>
 </div>
