@@ -4,11 +4,7 @@
   <h2><%= @response.user.email %> </h2>
     <p><%= @response.comment %></p>
     <h3>Current Availability:</h3>
-      <% @response.availabilities.each do |availability| %>
-      <ul>
-        <li><%= "#{format_date(availability.start_date)} - #{format_date(availability.end_date)}"%></li>
-      </ul>
-      <% end %>
+      <%= render partial: 'responses/availability', locals: {response: @response} %>
 <% elsif @response.availabilities.empty? %>
   <h2>When are you available?</h2>
 <% else %>
@@ -20,12 +16,7 @@
         <%= link_to "Edit comment", edit_escapade_response_path(@escapade, @response) %>
       <% end %>
   <h3>Current Availability:</h3>
-    <% @response.availabilities.each do |availability| %>
-      <ul>
-        <li><%= "#{format_date(availability.start_date)} - #{format_date(availability.end_date)}"%></li>
-        <li><%= link_to "Edit this date range", edit_availability_path(availability) %></li>
-      </ul>
-    <% end %>
+    <%= render partial: 'responses/availability', locals: {response: @response} %>
 <% end %>
     <% if current_user == @response.user %>
       <h3>Add Availability: </h3>

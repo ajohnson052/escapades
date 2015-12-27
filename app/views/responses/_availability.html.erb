@@ -1,0 +1,8 @@
+<ul>
+  <% response.availabilities.each do |availability| %>
+  <li><%= "#{format_date(availability.start_date)} - #{format_date(availability.end_date)}"%></li>
+  <% if current_user === response.user %>
+    <li><%= link_to "Edit this date range", edit_availability_path(availability) %></li>
+  <% end %>
+<% end %>
+</ul>

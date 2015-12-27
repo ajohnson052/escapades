@@ -60,9 +60,14 @@
     <% end %>
   <h2>Commits</h2>
     <% @user.commits.each do |commit| %>
-      <% escapade= @escapades.find(commit.escapade_id) %>
-      <%= escapade.title %>
+      <% escapade = @escapades.find(commit.escapade_id) %>
+      <h3><%= escapade.title %></h3>
       <%= format_date(escapade.start_date) %> - <%= format_date(escapade.end_date) %>
     <% end %>
   <h2>Responses</h2>
+    <% @user.responses.each do |response| %>
+      <% escapade = @escapades.find(response.escapade_id) %>
+      <h3><%= escapade.title %></h3>
+      <%= render partial: 'responses/availability', locals: {response: response} %>
+    <% end %>
 </div>
