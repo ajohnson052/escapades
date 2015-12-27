@@ -4,10 +4,7 @@
   <% end %>
   <% @escapades.each do |escapade| %>
     <% if escapade.status == "idea" %>
-      <div class = "escapade thumbnail">
-        <h3><%= link_to escapade.title, escapade_path(escapade) %></h3>
-        <%= link_to (image_tag escapade.image), escapade_path(escapade) %>
-      </div>
+      <%= render partial: 'thumbnail', locals: {escapade: escapade} %>
     <% end %>
   <% end %>
 <h2>Events</h2>
@@ -16,9 +13,7 @@
   <% end %>
   <% @escapades.each do |escapade| %>
     <% if escapade.status == "event" %>
-      <div class = "escapade thumbnail">
-        <h3><%= link_to escapade.title, escapade_path(escapade) %></h3>
-        <%= link_to (image_tag escapade.image), escapade_path(escapade) %>
+      <%= render partial: 'thumbnail', locals: {escapade: escapade} %>
       </div>
     <% end %>
   <% end %>

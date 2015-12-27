@@ -21,10 +21,7 @@
     <% else %>
       <% @user.escapades.each do |escapade| %>
         <% if escapade.status == 'idea' %>
-          <div class = "escapade thumbnail">
-            <h2><%= link_to escapade.title, escapade_path(escapade) %></h2>
-            <%= link_to (image_tag escapade.image), escapade_path(escapade) %>
-          </div>
+          <%= render partial: 'escapades/thumbnail', locals: {escapade: escapade} %>
         <% end %>
       <% end %>
     <% end %>
@@ -34,10 +31,7 @@
     <% else %>
       <% @user.escapades.each do |escapade| %>
         <% if escapade.status == 'event' %>
-          <div class = "escapade thumbnail">
-            <h2><%= link_to escapade.title, escapade_path(escapade) %></h2>
-            <%= link_to (image_tag escapade.image), escapade_path(escapade) %>
-          </div>
+          <%= render partial: 'escapades/thumbnail', locals: {escapade: escapade} %>
         <% end %>
       <% end %>
     <% end %>
@@ -47,10 +41,10 @@
     <h2>Pending Friend Requests</h2>
     <ul>
       <% @user.inverse_temps.each do |inverse_temp| %>
-        <li><%= inverse_temp.email %><%= link_to "Accept", friendships_path(friend_id: inverse_temp.id), method: :post %></li>
+        <li><%= inverse_temp.email %><%= link_to "Accept", friendships_path(friend_id: inverse_temp.id), method: :post %><%= link_to "Cancel", tempship_path(user_id: inverse_temp.id), method: :delete %></li>
       <% end %>
       <% @user.temps.each do |temp| %>
-        <li><%= temp.email %></li>
+        <li><%= temp.email %><%= link_to "Cancel", tempship_path(temp_id: temp.id), method: :delete %></li>
       <% end %>
     </ul>
   <% end %>

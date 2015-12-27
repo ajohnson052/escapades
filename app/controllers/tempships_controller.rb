@@ -10,14 +10,14 @@ class TempshipsController < ApplicationController
   end
 
   def destroy
-    @tempship = tempship.find(params[:id])
-    if current_user == @tempship.user_id
-      @temp = User.find(@tempship.temp_id)
+    if params[:user_id]
+      @tempship = Tempship.find_by(user_id: params[:user_id], temp_id: current_user.id)
     else
-      @temp = User.find(@tempship.user_id)
+      @tempship = Tempship.find_by(user_id: current_user.id, temp_id: params[:temp_id])
     end
+    authorize! :destroy, @tempship
     @tempship.destroy
-    flash[:notice] = "You have cancelled your friend request"
+    flash[:notice] = "You have cancelled this friend request"
     redirect_to user_path(current_user)
   end
 end
