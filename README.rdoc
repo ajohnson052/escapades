@@ -11,6 +11,9 @@ Technologies Used:
 --used ActiveRecord (object relational mapping)
 --used Devise for user authentification
 --used CanCanCan for user authorization
+--used CarrierWavefor uploading images
+--used s3 for storing images
+--used heroku for deployment
 
 Problems Encountered:
 --I originally intended to have responses include start and end dates rather
