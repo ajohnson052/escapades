@@ -24,6 +24,11 @@ class EscapadesController < ApplicationController
 
   def create
     @escapade = current_user.escapades.new(escapade_params)
+    unless escapade_params[:image]
+      File.open("app/assets/images/default.png") do |image|
+        @escapade.image = image
+      end
+    end
     if @escapade.save
       flash[:notice] = "You have successfully posted your new idea!"
       redirect_to escapade_path(@escapade)
