@@ -2,15 +2,25 @@ Escapade.destroy_all
 User.destroy_all
 
 
-for i in 0..10
+for i in 1...10
   User.create(email: "user#{i}@domain.com", password: "qwerqwer", password_confirmation:"qwerqwer")
 end
 
 user1 = User.find_by(email: "user1@domain.com")
 
-Escapade.create(title: "Thailand", start_date: "2016-01-01", end_date: "2016-05-01", description: "Truffaut trust fund brooklyn godard lo-fi hella, flexitarian stumptown offal food truck taxidermy jean shorts. Microdosing try-hard green juice aesthetic dreamcatcher. Pop-up quinoa hammock fap, banh mi shoreditch health goth small batch tattooed mustache hashtag selvage YOLO chambray letterpress. IPhone cliche heirloom, stumptown bicycle rights celiac green juice intelligentsia deep v VHS tote bag pork belly scenester yuccie mixtape. Shoreditch taxidermy bespoke franzen etsy offal vice. Put a bird on it cray kogi schlitz, bitters PBR&B polaroid tilde vinyl twee poutine DIY XOXO small batch. Cray forage wayfarers, occupy yuccie pitchfork pop-up vinyl swag pickled scenester tacos blog put a bird on it.", user_id: user1.id)
+thailand = Escapade.create(title: "Thailand", start_date: "2016-01-01", end_date: "2016-05-01", description: "Truffaut trust fund brooklyn godard lo-fi hella, flexitarian stumptown offal food truck taxidermy jean shorts. Microdosing try-hard green juice aesthetic dreamcatcher. Pop-up quinoa hammock fap, banh mi shoreditch health goth small batch tattooed mustache hashtag selvage YOLO chambray letterpress. IPhone cliche heirloom, stumptown bicycle rights celiac green juice intelligentsia deep v VHS tote bag pork belly scenester yuccie mixtape. Shoreditch taxidermy bespoke franzen etsy offal vice. Put a bird on it cray kogi schlitz, bitters PBR&B polaroid tilde vinyl twee poutine DIY XOXO small batch. Cray forage wayfarers, occupy yuccie pitchfork pop-up vinyl swag pickled scenester tacos blog put a bird on it.", user_id: user1.id)
 
-Escapade.create(title: "Norwegian Adventure", start_date: "2016-02-01", end_date: "2016-03-01", description: "Butcher kinfolk craft beer tumblr seitan post-ironic. Tacos microdosing squid pour-over four loko, hella portland cronut humblebrag authentic kombucha migas. +1 XOXO YOLO banjo, green juice roof party umami. Butcher sustainable listicle meh, pabst leggings fap schlitz dreamcatcher mlkshk. Gastropub authentic chartreuse chicharrones, sriracha williamsburg salvia keytar 3 wolf moon brunch marfa mixtape kitsch fingerstache irony. Truffaut trust fund brooklyn godard lo-fi hella, flexitarian stumptown offal food truck taxidermy jean shorts. Microdosing try-hard green juice aesthetic dreamcatcher. Pop-up quinoa hammock fap, banh mi shoreditch health goth small batch tattooed mustache hashtag selvage YOLO chambray letterpress. IPhone cliche heirloom, stumptown bicycle rights celiac green juice intelligentsia deep v VHS tote bag pork belly scenester yuccie mixtape. Shoreditch taxidermy bespoke franzen etsy offal vice. Put a bird on it cray kogi schlitz, bitters PBR&B polaroid tilde vinyl twee poutine DIY XOXO small batch. Cray forage wayfarers, occupy yuccie pitchfork pop-up vinyl swag pickled scenester tacos blog put a bird on it.", user_id: user1.id)
+File.open("app/assets/images/thailand.jpg") do |image|
+  thailand.image = image
+end
+thailand.save!
+
+norway = Escapade.create(title: "Norwegian Adventure", start_date: "2016-02-01", end_date: "2016-03-01", description: "Butcher kinfolk craft beer tumblr seitan post-ironic. Tacos microdosing squid pour-over four loko, hella portland cronut humblebrag authentic kombucha migas. +1 XOXO YOLO banjo, green juice roof party umami. Butcher sustainable listicle meh, pabst leggings fap schlitz dreamcatcher mlkshk. Gastropub authentic chartreuse chicharrones, sriracha williamsburg salvia keytar 3 wolf moon brunch marfa mixtape kitsch fingerstache irony. Truffaut trust fund brooklyn godard lo-fi hella, flexitarian stumptown offal food truck taxidermy jean shorts. Microdosing try-hard green juice aesthetic dreamcatcher. Pop-up quinoa hammock fap, banh mi shoreditch health goth small batch tattooed mustache hashtag selvage YOLO chambray letterpress. IPhone cliche heirloom, stumptown bicycle rights celiac green juice intelligentsia deep v VHS tote bag pork belly scenester yuccie mixtape. Shoreditch taxidermy bespoke franzen etsy offal vice. Put a bird on it cray kogi schlitz, bitters PBR&B polaroid tilde vinyl twee poutine DIY XOXO small batch. Cray forage wayfarers, occupy yuccie pitchfork pop-up vinyl swag pickled scenester tacos blog put a bird on it.", user_id: user1.id)
+
+File.open("app/assets/images/norway.jpg") do |image|
+  norway.image = image
+end
+norway.save!
 #
 # Escapade.create(title: "Trapeze Class", image: "https://i.ytimg.com/vi/WIO-lxCyiDU/maxresdefault.jpg", start_date: "2015-12-01", end_date:"2015-12-31", description: "Intelligentsia distillery VHS sriracha tattooed, dreamcatcher echo park DIY next level pour-over normcore gentrify. Celiac PBR&B tacos seitan yr. Wayfarers kitsch health goth, tattooed gluten-free sustainable farm-to-table tote bag +1 90's art party. Tacos ramps farm-to-table selvage pickled XOXO williamsburg cred. Sartorial literally freegan bushwick chia roof party, gentrify sustainable chicharrones brooklyn. Salvia viral kombucha neutra, skateboard twee craft beer street art blue bottle. Health goth cred echo park pitchfork, chillwave cliche fingerstache lomo bespoke.", user_id: 1)
 #
