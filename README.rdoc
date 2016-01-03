@@ -24,6 +24,5 @@ this was not very user friendly.
 Future Development:
 --I would like to improve error handling. (e.g. for paths that do not exist)
 --I would like for the footer to stick to the bottom of the page
---I would like to utilize AWS to allow users to upload their own photos
 --I would like to add an option to archive events
 (see trello for more ideas)
