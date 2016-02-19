@@ -1,7 +1,18 @@
 require 'test_helper'
 
 class EscapadesControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  def setup
+    @escapade = create :escapade
+  end
+
+  describe 'show method' do
+
+    it 'should direct to the proper show path' do
+      get :show, escapade: @escapade
+      assert_redirected_to escapade_path(@escapade)
+    end
+
+  end
+
 end
