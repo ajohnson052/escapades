@@ -4,7 +4,7 @@ This application is for planning trips with friends. A user can post an idea for
 a trip and their friends can post the dates they are available.
 
 ## Technologies Used
-* Ruby 2.2.3p173 (2015-08-18 revision 51636) [x86_64-darwin14]
+* Ruby 2.2.4
 * CSS for styling
 * PostgreSQL (database management system)
 * Rails (MVC web application framework)
