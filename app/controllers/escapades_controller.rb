@@ -1,4 +1,5 @@
 class EscapadesController < ApplicationController
+  include EscapadesHelper
   before_action :authenticate_user!, except: [:index]
 
   def index
