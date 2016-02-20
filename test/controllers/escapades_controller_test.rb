@@ -54,23 +54,23 @@ class EscapadesControllerTest < ActionController::TestCase
     end
 
     it 'should assign overlap in availabilities as optimal when there are two overlapping responses' do
-      @escapade_overlapping_responses = create(:escapade, :overlapping_responses)
-      get :show, id:@escapade_overlapping_responses
-      response = @escapade_overlapping_responses.responses.last
+      escapade_overlapping = create(:escapade, :overlapping_responses)
+      get :show, id:escapade_overlapping
+      response = escapade_overlapping.responses.last
       availability = response.availabilities.first
       assert_equal [availability.start_date, availability.end_date], assigns(:optimal_dates).first
     end
 
     it 'should assign nothing as optimal when there are two distinct responses' do
-      @escapade_distinct_responses = create(:escapade, :distinct_responses)
-      get :show, id:@escapade_distinct_responses
+      escapade_distinct = create(:escapade, :distinct_responses)
+      get :show, id:escapade_distinct
       assert_empty assigns(:optimal_dates)
     end
 
     it 'should assign overlap in availabilities as optimal when there are complex overlapping responses' do
-      @escapade_complex_overlapping_responses = create(:escapade, :complex_overlapping_responses)
-      get :show, id: @escapade_complex_overlapping_responses
-      response = @escapade_complex_overlapping_responses.responses.last
+      escapade_complex = create(:escapade, :complex_overlapping_responses)
+      get :show, id: escapade_complex
+      response = escapade_complex.responses.last
       availability = response.availabilities.first
       assert_equal [availability.start_date, availability.end_date], assigns(:optimal_dates).first
     end
