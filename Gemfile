@@ -5,7 +5,6 @@ gem 'google-webfonts'
 gem 'pry'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
-gem 'rspec'
 gem 'carrierwave'
 gem 'fog'
 gem 'figaro'
@@ -20,11 +19,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :test do
-  # gem 'minitest-reporters'
-  # gem 'mini_backtrace'
+  gem 'minitest-reporters'
   gem 'minitest-spec-rails'
   gem 'factory_girl_rails'
-  # gem 'faker'
   gem 'database_cleaner'
 end
 
