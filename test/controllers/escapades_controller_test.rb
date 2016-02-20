@@ -35,13 +35,11 @@ class EscapadesControllerTest < ActionController::TestCase
       assert_equal @escapade.responses, assigns(:responses)
     end
 
-    # it 'should return response availability if there is one response' do
-    #   @test_response = @escapade.responses.create(:response)
-    #   puts @test_response.user.email
-    #   @test_response.availabilities.create(attributes_for(:availability))
-    #   # get :show, id: @escapade
-    #   assert_equal @escapade.responses, assigns(:responses)
-    # end
+    it 'should return response availability if there is one response' do
+      @escapade_with_response = create(:escapade, :with_response)
+      get :show, id: @escapade_with_response
+      assert_equal @escapade.responses, assigns(:responses)
+    end
 
   end
 
