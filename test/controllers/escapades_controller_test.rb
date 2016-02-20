@@ -75,6 +75,12 @@ class EscapadesControllerTest < ActionController::TestCase
       assert_equal [availability.start_date, availability.end_date], assigns(:optimal_dates).first
     end
 
+    it 'should assign nothing as optimal when there are complex distinct responses' do
+      escapade_complex = create(:escapade, :complex_distinct_responses)
+      get :show, id: escapade_complex
+      assert_empty assigns(:optimal_dates)
+    end
+
   end
 
 end

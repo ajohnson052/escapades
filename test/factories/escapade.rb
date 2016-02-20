@@ -27,8 +27,15 @@ FactoryGirl.define do
 
     trait :complex_overlapping_responses do
       after(:create) do |escapade|
-        escapade.responses << create(:response, :with_jan_march_availability)
+        escapade.responses << create(:response, :jan_march_availability)
         escapade.responses << create(:response, :march_availability)
+      end
+    end
+
+    trait :complex_distinct_responses do
+      after(:create) do |escapade|
+        escapade.responses << create(:response, :jan_march_availability)
+        escapade.responses << create(:response, :february_availability)
       end
     end
 

@@ -12,20 +12,20 @@ FactoryGirl.define do
 
     trait :february_availability do
       after(:create) do |response|
-        response.availabilities << create(:availability, :february_only)
+        response.availabilities << create(:availability, :february)
       end
     end
 
     trait :march_availability do
       after(:create) do |response|
-        response.availabilities << create(:availability, :march_only)
+        response.availabilities << create(:availability, :march)
       end
     end
 
-    trait :with_jan_march_availability do
+    trait :jan_march_availability do
       after(:create) do |response|
-        response.availabilities << create(:availability, :january_only)
-        response.availabilities << create(:availability, :march_only)
+        response.availabilities << create(:availability, :january)
+        response.availabilities << create(:availability, :march)
       end
     end
 
