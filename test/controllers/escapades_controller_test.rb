@@ -41,6 +41,11 @@ class EscapadesControllerTest < ActionController::TestCase
       assert_equal @escapade.responses, assigns(:responses)
     end
 
+    it 'should assign the full range as optimal when there are no responses' do
+      get :show, id: @escapade
+      assert_equal [@escapade.start_date, @escapade.end_date], assigns(:optimal_dates)[0]
+    end
+
   end
 
 end
