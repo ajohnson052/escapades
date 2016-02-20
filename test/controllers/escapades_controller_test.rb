@@ -30,12 +30,12 @@ class EscapadesControllerTest < ActionController::TestCase
       assert_response :success
     end
 
-    it 'should not return optimal dates if there are no responses' do
+    it 'should not assign responses when there are no responses' do
       get :show, id: @escapade
       assert_equal @escapade.responses, assigns(:responses)
     end
 
-    it 'should return response availability if there is one response' do
+    it 'should assign responses when there is one response' do
       @escapade_with_response = create(:escapade, :with_response)
       get :show, id: @escapade_with_response
       assert_equal @escapade.responses, assigns(:responses)
