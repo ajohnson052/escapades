@@ -5,7 +5,7 @@ FactoryGirl.define do
     comment "Comment"
 
     trait :with_availability do
-      after(:build) do |availability|
+      after(:create) do |availability|
         create(:availability)
       end
     end
