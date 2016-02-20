@@ -8,7 +8,6 @@ class EscapadesControllerTest < ActionController::TestCase
     sign_in @user
     @escapade = create :escapade
     @escapade_with_response = create(:escapade, :with_response)
-    @escapade_overlapping_responses = create(:escapade, :overlapping_responses)
   end
 
   describe 'index method' do
@@ -54,11 +53,18 @@ class EscapadesControllerTest < ActionController::TestCase
       assert_equal [availability.start_date, availability.end_date], assigns(:optimal_dates).first
     end
 
-    it 'should assign overlap in availabilities as optimal when there are two responses' do
+    it 'should assign overlap in availabilities as optimal when there are two overlapping responses' do
+      @escapade_overlapping_responses = create(:escapade, :overlapping_responses)
       get :show, id:@escapade_overlapping_responses
       response = @escapade_overlapping_responses.responses.last
       availability = response.availabilities.first
       assert_equal [availability.start_date, availability.end_date], assigns(:optimal_dates).first
+    end
+
+    it 'should assign nothing as optimal when there are two distinct responses' do
+      @escapade_distinct_responses = create(:escapade, :distinct_responses)
+      get :show, id:@escapade_distinct_responses
+      assert_empty assigns(:optimal_dates)
     end
 
   end

@@ -15,7 +15,7 @@ FactoryGirl.define do
   trait :march_only do
     after(:create) do |availability|
       availability.start_date = "2016-03-01"
-      availabiltiy.end_date = "2016-03-31"
+      availability.end_date = "2016-03-31"
     end
   end
 

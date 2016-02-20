@@ -10,5 +10,17 @@ FactoryGirl.define do
       end
     end
 
+    trait :february_availability do
+      after(:create) do |response|
+        response.availabilities << create(:availability, :february_only)
+      end
+    end
+
+    trait :march_availability do
+      after(:create) do |response|
+        response.availabilities << create(:availability, :march_only)
+      end
+    end
+
   end
 end
