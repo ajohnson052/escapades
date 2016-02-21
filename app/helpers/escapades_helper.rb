@@ -5,11 +5,9 @@ module EscapadesHelper
   end
 
   def get_user_availability response
-    user_availability = []
-    response.availabilities.each do |availability|
-      user_availability = user_availability + get_dates(availability)
-    end
-    user_availability
+    user_availability = response.availabilities.to_a
+    user_availability.map! { |availability| get_dates(availability)}
+    user_availability.flatten!
   end
 
   def convert_to_range optimal_dates
