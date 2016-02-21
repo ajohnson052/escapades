@@ -10,11 +10,11 @@ module EscapadesHelper
     user_availability.flatten!
   end
 
-  def convert_to_range dates
-    range = dates.reject do |i|
+  def get_ranges dates
+    ranges = dates.reject do |i|
       dates.include?(i-1) & dates.include?(i+1)
     end
-    range
+    ranges.each_slice(2).to_a
   end
 
   def all_available escapade
@@ -28,8 +28,7 @@ module EscapadesHelper
 
   def get_optimal_dates escapade
     optimal_dates = all_available(escapade)
-    optimal_dates = convert_to_range(optimal_dates)
-    optimal_dates = optimal_dates.each_slice(2).to_a
+    get_ranges(optimal_dates)
   end
 
 end
