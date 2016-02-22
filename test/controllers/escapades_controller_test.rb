@@ -43,6 +43,7 @@ class EscapadesControllerTest < ActionController::TestCase
 
     it 'should assign the full range as optimal when there are no responses' do
       get :show, id: @escapade
+      assert_equal 1, assigns(:optimal_dates).length
       assert_equal [@escapade.start_date, @escapade.end_date], assigns(:optimal_dates).first
     end
 
@@ -50,6 +51,7 @@ class EscapadesControllerTest < ActionController::TestCase
       get :show, id: @escapade_with_response
       response = @escapade_with_response.responses.first
       availability = response.availabilities.first
+      assert_equal 1, assigns(:optimal_dates).length
       assert_equal [availability.start_date, availability.end_date], assigns(:optimal_dates).first
     end
 
@@ -58,6 +60,7 @@ class EscapadesControllerTest < ActionController::TestCase
       get :show, id:escapade_overlapping
       response = escapade_overlapping.responses.last
       availability = response.availabilities.first
+      assert_equal 1, assigns(:optimal_dates).length
       assert_equal [availability.start_date, availability.end_date], assigns(:optimal_dates).first
     end
 
@@ -72,6 +75,7 @@ class EscapadesControllerTest < ActionController::TestCase
       get :show, id: escapade_complex
       response = escapade_complex.responses.last
       availability = response.availabilities.first
+      assert_equal 1, assigns(:optimal_dates).length
       assert_equal [availability.start_date, availability.end_date], assigns(:optimal_dates).first
     end
 
